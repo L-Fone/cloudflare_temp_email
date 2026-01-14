@@ -50,7 +50,9 @@ jobs:
           export debug_mode=${{ secrets.DEBUG_MODE }}
           export use_mail_wasm_parser=${{ secrets.BACKEND_USE_MAIL_WASM_PARSER }}
           cd worker/
-          echo "" | base64 -d > wrangler.toml
+          if [ -n "$BACKEND_TOML" ]; then
+             echo "$BACKEND_TOML" | base64 -d > wrangler.toml
+          fi
           pnpm install --no-frozen-lockfile
 
           if [ -n "$use_mail_wasm_parser" ]; then
