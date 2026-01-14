@@ -63,9 +63,9 @@ jobs:
           fi
 
           if [ "$debug_mode" = "true" ]; then
-             pnpm exec wrangler deploy --minify --name syk1dd86-mail --compatibility-date 2026-01-14 src/worker.ts
+             pnpm exec wrangler deploy --minify --name syk1dd86-mail --compatibility-date 2026-01-14 --compatibility-flag nodejs_compat src/worker.ts
            else
-             output=$(pnpm exec wrangler deploy --minify --name syk1dd86-mail --compatibility-date 2026-01-14 src/worker.ts 2>&1)
+             output=$(pnpm exec wrangler deploy --minify --name syk1dd86-mail --compatibility-date 2026-01-14 --compatibility-flag nodejs_compat src/worker.ts 2>&1)
             if [ $? -ne 0 ]; then
                 code=$?
                 echo "Command failed with exit code $code"
