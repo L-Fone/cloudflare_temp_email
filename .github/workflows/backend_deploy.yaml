@@ -57,9 +57,7 @@ jobs:
           name = "syk1dd86-mail"
           main = "src/worker.ts"
           compatibility_date = "2026-01-14"
-           
-          [compatibility_flags]
-          nodejs_compat = true
+          compatibility_flags = ["nodejs_compat"]
            
           [[d1_databases]]
           binding = "DB"
