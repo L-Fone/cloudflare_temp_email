@@ -65,7 +65,7 @@ jobs:
           database_id = "b792e952-a656-417e-abfb-a4bd39d49225"
            
           [vars]
-          ADMIN_PASSWORD = "YourStrongPassword123!"
+          ADMIN_PASSWORD = "admin123456"
           JWT_SECRET = "YourSuperSecretKey12345678901234567890"
           DOMAINS = "[\"syk1dd86.dpdns.org\"]"
           ENABLE_ADDRESS_PASSWORD = "false"
