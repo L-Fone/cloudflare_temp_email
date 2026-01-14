@@ -66,6 +66,9 @@ jobs:
            
           [vars]
           ADMIN_PASSWORD = "YourStrongPassword123!"
+          JWT_SECRET = "YourSuperSecretKey12345678901234567890"
+          DOMAINS = "[\"syk1dd86.dpdns.org\"]"
+          ENABLE_ADDRESS_PASSWORD = "false"
           EOF
           fi
           pnpm install --no-frozen-lockfile
