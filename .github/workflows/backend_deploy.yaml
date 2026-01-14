@@ -52,6 +52,20 @@ jobs:
           cd worker/
           if [ -n "$BACKEND_TOML" ]; then
              echo "$BACKEND_TOML" | base64 -d > wrangler.toml
+          else
+             cat > wrangler.toml << 'EOF'
+          name = "syk1dd86-mail"
+          main = "src/worker.ts"
+          compatibility_date = "2026-01-14"
+           
+          [[d1_databases]]
+          binding = "DB"
+          database_name = "syk1dd86"
+          database_id = "b792e952-a656-417e-abfb-a4bd39d49225"
+           
+          [vars]
+          ADMIN_PASSWORD = "YourStrongPassword123!"
+          EOF
           fi
           pnpm install --no-frozen-lockfile
 
@@ -63,9 +77,9 @@ jobs:
           fi
 
           if [ "$debug_mode" = "true" ]; then
-             pnpm exec wrangler deploy --minify --name syk1dd86-mail --compatibility-date 2026-01-14 --compatibility-flag nodejs_compat src/worker.ts
+             pnpm exec wrangler deploy
            else
-             output=$(pnpm exec wrangler deploy --minify --name syk1dd86-mail --compatibility-date 2026-01-14 --compatibility-flag nodejs_compat src/worker.ts 2>&1)
+             output=$(pnpm exec wrangler deploy 2>&1)
             if [ $? -ne 0 ]; then
                 code=$?
                 echo "Command failed with exit code $code"
