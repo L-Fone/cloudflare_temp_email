@@ -63,9 +63,9 @@ jobs:
           fi
 
           if [ "$debug_mode" = "true" ]; then
-            pnpm run deploy
-          else
-            output=$(pnpm run deploy 2>&1)
+             pnpm exec wrangler deploy --minify src/index.ts
+           else
+             output=$(pnpm exec wrangler deploy --minify src/index.ts 2>&1)
             if [ $? -ne 0 ]; then
                 code=$?
                 echo "Command failed with exit code $code"
